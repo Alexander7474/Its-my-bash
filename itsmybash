@@ -1,6 +1,6 @@
 # PS1 / prompt customization
 
-source ~/.bash/src/prompt.sh
+source ~/.bash/src/git.sh
 source ~/.bash/src/battery.sh
 
 r='\e[0m'
@@ -27,7 +27,7 @@ fill_end() {
 	echo $(repeat_char "-" $n_space) $end
 }
 
-PS1="$bold_green_bg \u $bold_magenta_bg \h $bold_cyan_bg \$(pwd) $r \$(git_prompt) \$(fill_end)\n[λ]> "
+PS1="$bold_green_bg \u $bold_magenta_bg \h $bold_cyan_bg \$(pwd) $r \$(get_git_branch) \$(fill_end)\n[λ]> "
 
 # path customization
 
