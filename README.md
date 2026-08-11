@@ -2,4 +2,4 @@
 
 ## Install
 
-```echo "source ~/.bash/itsmybash" >> ~/.bashrc```
+```git clone https://github.com/Alexander7474/Its-my-bash.git ~/.bash && echo "source ~/.bash/itsmybash" >> ~/.bashrc```
