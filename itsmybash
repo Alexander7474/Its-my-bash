@@ -1,0 +1,36 @@
+# PS1 / prompt customization
+
+source /home/artyom/.bash/prompt.sh
+source /home/artyom/.bash/battery.sh
+
+r='\e[0m'
+
+bold_green_bg='\e[1;42m'
+bold_magenta_bg='\e[1;45m'
+bold_cyan_bg='\e[1;46m'
+bold_red_bg='\e[1;100m'
+
+repeat_char() {
+    local input="$1"
+    local count="$2"
+    printf -v myString '%*s' "$count"
+    printf '%s\n' "${myString// /$input}"
+}
+
+fill_end() {
+	end="$(battery)%|$(powerprofile)|$(date +"%H:%M")"
+	end_size=${#end}
+
+	ps=" $(whoami)  $(hostname)  $(pwd)  $(git_prompt) "
+	ps_size=${#ps}
+	n_space=$[$COLUMNS-$ps_size-$end_size-1]
+	echo $(repeat_char "-" $n_space) $end
+}
+
+PS1="$bold_green_bg \u $bold_magenta_bg \h $bold_cyan_bg \$(pwd) $r \$(git_prompt) \$(fill_end)\n[λ]> "
+
+# path customization
+
+export HELIX_RUNTIME=~/src/helix/runtime
+export PATH="$PATH:/home/artyom/.cargo/bin"
+
