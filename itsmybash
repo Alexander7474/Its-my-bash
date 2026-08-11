@@ -1,7 +1,7 @@
 # PS1 / prompt customization
 
-source /home/artyom/.bash/prompt.sh
-source /home/artyom/.bash/battery.sh
+source ~/.bash/src/prompt.sh
+source ~/.bash/src/battery.sh
 
 r='\e[0m'
 
@@ -31,6 +31,6 @@ PS1="$bold_green_bg \u $bold_magenta_bg \h $bold_cyan_bg \$(pwd) $r \$(git_promp
 
 # path customization
 
-export HELIX_RUNTIME=~/src/helix/runtime
-export PATH="$PATH:/home/artyom/.cargo/bin"
+export HELIX_RUNTIME=$HOME/src/helix/runtime
+export PATH="$PATH:$HOME/.cargo/bin"
 
