@@ -1,0 +1,6 @@
+# Its-my-bash configuration
+
+LEFT_FUNCTIONS=""
+RIGHT_FUNCTIONS=""
+
+SEPARATOR="<->"

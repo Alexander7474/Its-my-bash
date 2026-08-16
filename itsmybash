@@ -2,6 +2,7 @@
 
 source ~/.bash/src/git.sh
 source ~/.bash/src/battery.sh
+source ~/.bash/config
 
 r='\e[0m'
 
@@ -21,10 +22,11 @@ fill_end() {
 	end="$(get_brightness)%|$(get_tlp_powerprofile)|$(date +"%H:%M")"
 	end_size=${#end}
 
-	ps=" $(whoami)  $(hostname)  $(pwd)  $(git_prompt) "
+	ps=" $(whoami)  $(hostname)  $(pwd)  $(get_git_branch) "
 	ps_size=${#ps}
 	n_space=$[$COLUMNS-$ps_size-$end_size-1]
-	echo $(repeat_char "-" $n_space) $end
+	n_space=$(echo "$n_space/${#SEPARATOR}" | bc)
+	echo $(repeat_char $SEPARATOR $n_space) $end
 }
 
 PS1="$bold_green_bg \u $bold_magenta_bg \h $bold_cyan_bg \$(pwd) $r \$(get_git_branch) \$(fill_end)\n[λ]> "
