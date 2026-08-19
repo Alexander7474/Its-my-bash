@@ -1,6 +1,153 @@
 # Its-my-bash configuration
 
-LEFT_FUNCTIONS=""
-RIGHT_FUNCTIONS=""
+# Add your source here
+source ~/.bash/src/git.sh
+source ~/.bash/src/battery.sh
+source ~/.bash/src/utils.sh
 
-SEPARATOR="<->"
+r='\e[0m'
+
+# Colors and styles, you can add your own
+# Regular
+black='\e[30m'
+red='\e[31m'
+green='\e[32m'
+yellow='\e[33m'
+blue='\e[34m'
+magenta='\e[35m'
+cyan='\e[36m'
+white='\e[37m'
+
+# Bright
+bright_black='\e[90m'
+bright_red='\e[91m'
+bright_green='\e[92m'
+bright_yellow='\e[93m'
+bright_blue='\e[94m'
+bright_magenta='\e[95m'
+bright_cyan='\e[96m'
+bright_white='\e[97m'
+
+# Bold
+bold_black='\e[1;30m'
+bold_red='\e[1;31m'
+bold_green='\e[1;32m'
+bold_yellow='\e[1;33m'
+bold_blue='\e[1;34m'
+bold_magenta='\e[1;35m'
+bold_cyan='\e[1;36m'
+bold_white='\e[1;37m'
+
+# Bold bright
+bold_bright_black='\e[1;90m'
+bold_bright_red='\e[1;91m'
+bold_bright_green='\e[1;92m'
+bold_bright_yellow='\e[1;93m'
+bold_bright_blue='\e[1;94m'
+bold_bright_magenta='\e[1;95m'
+bold_bright_cyan='\e[1;96m'
+bold_bright_white='\e[1;97m'
+
+# Backgrounds
+black_bg='\e[40m'
+red_bg='\e[41m'
+green_bg='\e[42m'
+yellow_bg='\e[43m'
+blue_bg='\e[44m'
+magenta_bg='\e[45m'
+cyan_bg='\e[46m'
+white_bg='\e[47m'
+
+# Bright backgrounds
+bright_black_bg='\e[100m'
+bright_red_bg='\e[101m'
+bright_green_bg='\e[102m'
+bright_yellow_bg='\e[103m'
+bright_blue_bg='\e[104m'
+bright_magenta_bg='\e[105m'
+bright_cyan_bg='\e[106m'
+bright_white_bg='\e[107m'
+
+# Bold + backgrounds
+bold_black_bg='\e[1;40m'
+bold_red_bg='\e[1;41m'
+bold_green_bg='\e[1;42m'
+bold_yellow_bg='\e[1;43m'
+bold_blue_bg='\e[1;44m'
+bold_magenta_bg='\e[1;45m'
+bold_cyan_bg='\e[1;46m'
+bold_white_bg='\e[1;47m'
+
+# Bold + bright backgrounds
+bold_bright_black_bg='\e[1;97;100m'
+bold_bright_red_bg='\e[1;97;101m'
+bold_bright_green_bg='\e[1;97;102m'
+bold_bright_yellow_bg='\e[1;97;103m'
+bold_bright_blue_bg='\e[1;97;104m'
+bold_bright_magenta_bg='\e[1;97;105m'
+bold_bright_cyan_bg='\e[1;97;106m'
+bold_bright_white_bg='\e[1;97;107m'
+
+# Text styles
+reset='\e[0m'
+bold='\e[1m'
+dim='\e[2m'
+italic='\e[3m'
+underline='\e[4m'
+blink='\e[5m'
+rapid_blink='\e[6m'
+reverse='\e[7m'
+hidden='\e[8m'
+strikethrough='\e[9m'
+
+# Style reset
+normal='\e[22m'
+no_italic='\e[23m'
+no_underline='\e[24m'
+no_blink='\e[25m'
+no_reverse='\e[27m'
+no_hidden='\e[28m'
+no_strikethrough='\e[29m'
+
+# Useful combinations
+bold_underline='\e[1;4m'
+bold_italic='\e[1;3m'
+bold_reverse='\e[1;7m'
+underline_reverse='\e[4;7m'
+dim_italic='\e[2;3m'
+bold_underline_reverse='\e[1;4;7m'
+
+# 256-color foreground/background
+fg256='\e[38;5;'
+bg256='\e[48;5;'
+
+# Truecolor (24-bit RGB)
+fg_rgb='\e[38;2;'
+bg_rgb='\e[48;2;'
+
+# You can configure the PS1 prompt here.
+# PS1 is decomposed in three part, the left
+# command, the separator in middle and the
+# right command, you can put 6 commands
+# max on each side (from LEFT_0 to LEFT_5
+# and RIGHT_0 to RIGHT_5).
+
+LEFT_0="$bold_bright_blue_bg whoami "
+LEFT_1="$bold_bright_magenta_bg hostname "
+LEFT_2="$bold_bright_cyan_bg pwd "
+LEFT_3="$bold_bright_magenta get_git_branch "
+LEFT_4=""
+LEFT_5=""
+RIGHT_0=" get_brightness "
+RIGHT_1=" get_tlp_powerprofile "
+RIGHT_2=" date +'%H:%M' "
+RIGHT_3=""
+RIGHT_4=""
+RIGHT_5=""
+
+# Configure separator
+LEFT_SEPARATOR=""
+MIDDLE_SEPARATOR="-"
+RIGHT_SEPARATOR="/"
+
+PROMPT_ENTRY="[λ]>"

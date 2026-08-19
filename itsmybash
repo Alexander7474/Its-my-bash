@@ -1,15 +1,6 @@
 # PS1 / prompt customization
 
-source ~/.bash/src/git.sh
-source ~/.bash/src/battery.sh
 source ~/.bash/config
-
-r='\e[0m'
-
-bold_green_bg='\e[1;42m'
-bold_magenta_bg='\e[1;45m'
-bold_cyan_bg='\e[1;46m'
-bold_red_bg='\e[1;100m'
 
 repeat_char() {
     local input="$1"
@@ -18,18 +9,24 @@ repeat_char() {
     printf '%s\n' "${myString// /$input}"
 }
 
-fill_end() {
-	end="$(get_brightness)%|$(get_tlp_powerprofile)|$(date +"%H:%M")"
-	end_size=${#end}
+fill_ps() {
+    local left_ps right_ps left right
+	left_ps=$(get_left_ps)
+	right_ps=$(get_right_ps)
+    left=$(visible_length "$left_ps")
+    right=$(visible_length "$right_ps")
 
-	ps=" $(whoami)  $(hostname)  $(pwd)  $(get_git_branch) "
-	ps_size=${#ps}
-	n_space=$[$COLUMNS-$ps_size-$end_size-1]
-	n_space=$(echo "$n_space/${#SEPARATOR}" | bc)
-	echo $(repeat_char $SEPARATOR $n_space) $end
+    local available=$((COLUMNS - left - right))
+    local separator_width=${#MIDDLE_SEPARATOR}
+
+    (( available < 0 )) && available=0
+
+    local count=$((available / separator_width))
+
+    echo -e "$left_ps$(repeat_char $MIDDLE_SEPARATOR $count)$right_ps\n$PROMPT_ENTRY "
 }
 
-PS1="$bold_green_bg \u $bold_magenta_bg \h $bold_cyan_bg \$(pwd) $r \$(get_git_branch) \$(fill_end)\n[λ]> "
+PS1="\$(fill_ps)"
 
 # path customization
 
